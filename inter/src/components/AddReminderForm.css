@@ -1,0 +1,283 @@
+.form-container {
+  background: var(--surface-color);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+  margin-bottom: var(--spacing-xl);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-container h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.8em;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.form-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--primary-light)
+  );
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) var(--transition-bounce);
+}
+
+.form-container:hover h2::after {
+  transform: scaleX(1);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease;
+}
+
+.form-group input[type="text"],
+.form-group input[type="time"] {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-inset);
+  transition: all var(--transition-speed) ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="time"]:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset), 0 0 0 2px var(--primary-color);
+}
+
+.form-group input.error {
+  box-shadow: var(--shadow-inset), 0 0 0 2px var(--error-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.9em;
+  margin-top: var(--spacing-xs);
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.frequency-toggle {
+  display: flex;
+  gap: var(--spacing-md);
+  background: var(--surface-color);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-inset);
+  margin-bottom: var(--spacing-lg);
+}
+
+.frequency-toggle label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) var(--transition-bounce);
+  flex: 1;
+  justify-content: center;
+  background: var(--surface-color);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+  font-weight: 500;
+  margin: 0;
+}
+
+.frequency-toggle label:hover {
+  transform: translateY(-2px);
+}
+
+.frequency-toggle input[type="radio"] {
+  display: none;
+}
+
+.frequency-toggle input[type="radio"]:checked + label {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-light) 100%
+  );
+  color: white;
+  box-shadow: var(--shadow-inset);
+  transform: translateY(-2px);
+}
+
+.days-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  background: var(--surface-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-inset);
+}
+
+.day-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  background: var(--surface-color);
+  transition: all var(--transition-speed) var(--transition-bounce);
+  justify-content: center;
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+}
+
+.day-checkbox:hover {
+  transform: translateY(-2px);
+}
+
+.day-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.day-checkbox input[type="checkbox"]:checked + span {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-light) 100%
+  );
+  color: white;
+  box-shadow: var(--shadow-inset);
+  transform: translateY(-2px);
+}
+
+.day-checkbox span {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) var(--transition-bounce);
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 48px;
+  padding: var(--spacing-xs);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background: var(--surface-color);
+  box-shadow: var(--shadow-inset);
+  transition: all var(--transition-speed) ease;
+}
+
+input[type="color"]:hover {
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+}
+
+input[type="color"]:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset), 0 0 0 2px var(--primary-color);
+}
+
+.btn {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all var(--transition-speed) var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-color);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-light) 100%
+  );
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light), var(--shadow-dark),
+    0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .days-selector {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .form-container {
+    padding: var(--spacing-lg);
+  }
+
+  .frequency-toggle {
+    flex-direction: column;
+  }
+
+  .frequency-toggle label {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

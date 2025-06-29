@@ -1,0 +1,193 @@
+.reminder-list-container {
+  margin-top: var(--spacing-xl);
+}
+
+.reminder-list-container h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.8em;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.reminder-list-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--primary-light)
+  );
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) var(--transition-bounce);
+}
+
+.reminder-list-container:hover h2::after {
+  transform: scaleX(1);
+}
+
+.no-reminders {
+  text-align: center;
+  color: var(--text-light);
+  padding: var(--spacing-xl);
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+  opacity: 0.8;
+  animation: fadeIn 0.5s ease-out;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.reminder-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.reminder-card {
+  background: var(--surface-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+  position: relative;
+  transition: all var(--transition-speed) var(--transition-bounce);
+  animation: fadeIn 0.5s ease-out;
+  overflow: hidden;
+}
+
+.reminder-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--primary-light)
+  );
+  transition: all var(--transition-speed) var(--transition-bounce);
+}
+
+.reminder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-light), var(--shadow-dark),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-card:hover::before {
+  width: 8px;
+}
+
+.reminder-card h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--primary-color);
+  font-size: 1.4em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reminder-card h3::before {
+  content: "💊";
+  font-size: 0.9em;
+}
+
+.reminder-card .time {
+  font-size: 1.6em;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reminder-card .time::before {
+  content: "🕒";
+  font-size: 0.9em;
+}
+
+.reminder-card .frequency {
+  color: var(--text-light);
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reminder-card .frequency::before {
+  content: "📅";
+  font-size: 0.9em;
+}
+
+.delete-btn {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--surface-color);
+  border: none;
+  color: var(--error-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: 50%;
+  transition: all var(--transition-speed) var(--transition-bounce);
+  box-shadow: var(--shadow-light), var(--shadow-dark);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: var(--shadow-inset);
+}
+
+.delete-btn:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset), 0 0 0 2px var(--error-color);
+}
+
+.delete-btn:active {
+  transform: scale(0.95) rotate(-15deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .reminder-list {
+    grid-template-columns: 1fr;
+  }
+
+  .reminder-card {
+    padding: var(--spacing-md);
+  }
+
+  .reminder-card h3 {
+    font-size: 1.2em;
+  }
+
+  .reminder-card .time {
+    font-size: 1.4em;
+  }
+}
